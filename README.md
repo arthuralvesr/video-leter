@@ -1,54 +1,73 @@
-# Remotion video
+# Vídeo de apresentação do LETER
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+Projeto de vídeo vertical (1080 × 1920) criado com [Remotion](https://www.remotion.dev/). A composição principal se chama `LeterApresentacao`.
 
-Welcome to your Remotion project!
+## Antes de começar
 
-## Commands
+Instale uma versão atual do [Node.js](https://nodejs.org/) (LTS). O `npm` já vem junto com o Node.
 
-**Install Dependencies**
+Abra um terminal na pasta do projeto:
 
-```console
-npm i --loglevel=error
+```powershell
+cd leter-motion
 ```
 
-**Start Preview**
+## 1. Instalar as dependências
 
-```console
+Este passo só é necessário na primeira vez ou quando o projeto receber atualizações nas dependências.
+
+```powershell
+npm install
+```
+
+Espere o comando terminar. Ele criará a pasta `node_modules`, usada pelo projeto localmente.
+
+## 2. Abrir e assistir ao vídeo
+
+Inicie o Remotion Studio:
+
+```powershell
 npm run dev
 ```
 
-**Render video**
+O terminal mostrará um endereço, normalmente `http://localhost:3000`. Abra esse endereço no navegador e selecione a composição **LeterApresentacao**.
 
-```console
-npx remotion render
+No Studio você pode:
+
+- dar play e pausar o vídeo;
+- arrastar a linha do tempo para conferir cenas específicas;
+- verificar o resultado no formato vertical;
+- editar o código e ver as alterações na prévia.
+
+Para encerrar a prévia, volte ao terminal e pressione `Ctrl + C`.
+
+## 3. Gerar o arquivo MP4
+
+Quando o vídeo estiver pronto, rode:
+
+```powershell
+npx remotion render LeterApresentacao out/leter.mp4
 ```
 
-**Upgrade Remotion**
+Ao terminar, o arquivo final estará em `out/leter.mp4`.
 
-```console
-npx remotion upgrade
+## Verificar se o código está correto
+
+Antes de gerar ou enviar alterações, execute:
+
+```powershell
+npm run lint
 ```
 
-## Docs
+O comando verifica erros de TypeScript e de estilo no código.
 
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
+## Onde editar cada parte
 
-## Help
+| O que alterar | Arquivo |
+| --- | --- |
+| Textos, cores, imagens e animações das cenas | `src/LeterVideo.tsx` |
+| Formato, duração e nome da composição | `src/Composition.tsx` |
+| Fotos usadas no vídeo | `public/images/` |
+| Dependências e comandos disponíveis | `package.json` |
 
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+Depois de trocar uma imagem, mantenha o mesmo nome do arquivo ou atualize o caminho correspondente em `src/LeterVideo.tsx`.
